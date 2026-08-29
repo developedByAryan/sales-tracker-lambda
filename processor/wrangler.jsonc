@@ -1,0 +1,27 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "roblox-sales-processor",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-04",
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "roblox-sales-db",
+      "database_id": "8b264ae0-fd11-44ce-aed1-3b37359f1b75",
+      "migrations_dir": "../migrations"
+    }
+  ],
+
+  "queues": {
+    "consumers": [
+      {
+        "queue": "roblox-sales",
+        "max_batch_size": 10,
+        "max_batch_timeout": 5,
+        "max_retries": 5,
+        "dead_letter_queue": "roblox-sales-dlq"
+      }
+    ]
+  }
+}

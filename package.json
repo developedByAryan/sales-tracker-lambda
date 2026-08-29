@@ -1,0 +1,16 @@
+{
+  "name": "cloudflare-roblox-sales-bot",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:ingestor": "wrangler dev --config ingestor/wrangler.jsonc",
+    "dev:processor": "wrangler dev --config processor/wrangler.jsonc",
+    "deploy": "wrangler deploy --config ingestor/wrangler.jsonc && wrangler deploy --config processor/wrangler.jsonc",
+    "db:migrate:local": "wrangler d1 migrations apply roblox-sales-db --local --config processor/wrangler.jsonc",
+    "db:migrate:remote": "wrangler d1 migrations apply roblox-sales-db --remote --config processor/wrangler.jsonc",
+    "types": "wrangler types"
+  },
+  "devDependencies": {
+    "wrangler": "latest"
+  }
+}

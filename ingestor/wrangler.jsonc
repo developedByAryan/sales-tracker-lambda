@@ -1,0 +1,27 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "roblox-sales-ingestor",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-04",
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "roblox-sales-db",
+      "database_id": "8b264ae0-fd11-44ce-aed1-3b37359f1b75"
+    }
+  ],
+
+  "queues": {
+    "producers": [
+      {
+        "queue": "roblox-sales",
+        "binding": "SALES_QUEUE"
+      }
+    ]
+  },
+
+  "triggers": {
+    "crons": ["*/5 * * * *"]
+  }
+}
